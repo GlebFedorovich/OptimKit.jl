@@ -25,6 +25,8 @@ function optimize(fg, x, alg::ConjugateGradient;
     numfg = 1
     innergg = inner(x, g, g)
     normgrad = sqrt(innergg)
+
+    xhistory = [x]
     fhistory = [f]
     normgradhistory = [normgrad]
 
@@ -72,6 +74,8 @@ function optimize(fg, x, alg::ConjugateGradient;
         x, f, g = finalize!(x, f, g, numiter)
         innergg = inner(x, g, g)
         normgrad = sqrt(innergg)
+
+        push!(xhistory, x)
         push!(fhistory, f)
         push!(normgradhistory, normgrad)
 
@@ -104,7 +108,7 @@ function optimize(fg, x, alg::ConjugateGradient;
                             f, normgrad)
         end
     end
-    history = [fhistory normgradhistory]
+    history = [xhistory fhistory normgradhistory]
     return x, f, g, numfg, history
 end
 
