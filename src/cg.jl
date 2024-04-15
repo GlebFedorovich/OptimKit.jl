@@ -9,7 +9,7 @@ struct ConjugateGradient{F<:CGFlavor,T<:Real,L<:AbstractLineSearch} <: Optimizat
     restart::Int
     verbosity::Int
 end
-ConjugateGradient(; flavor = HagerZhang(), maxiter = typemax(Int), gradtol::Real = 1e-8,
+ConjugateGradient(; flavor = HagerZhang(), maxiter = typemax(Int), gradtol::Real = 1e-4,
         restart = typemax(Int), verbosity::Int = 0,
         linesearch::AbstractLineSearch = HagerZhangLineSearch(;verbosity = verbosity - 2)) =
     ConjugateGradient(flavor, maxiter, gradtol, linesearch, restart, verbosity)
