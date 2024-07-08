@@ -243,7 +243,7 @@ function Base.iterate(iter::HagerZhangLineSearchIterator, state::Tuple{LineSearc
 end
 
 HagerZhangLineSearch(; c₁::Real = 1//10, c₂::Real = 9//10, ϵ::Real = 1//10^6,
-                        θ::Real = 1//2, γ::Real = 2//3, ρ::Real = 2//1,
+                        θ::Real = 1//2, γ::Real = 2//3, ρ::Real = 5//1,
                         maxiter = typemax(Int), verbosity::Int = 0) =
     HagerZhangLineSearch(promote(c₁, c₂, ϵ, θ, γ, ρ)..., maxiter, verbosity)
 
